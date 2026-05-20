@@ -11,8 +11,8 @@ O protótipo divide-se em duas áreas funcionais:
 * **Área Privada (`/private`):** Acesso reservado (após autenticação) ao dashboard estatístico interativo, listagem e registo de equipamentos, gestão de fornecedores e mapeamento hospitalar.
 
 ## Autoria
-* **Nome:** [Sofia Vieira Velho Cabral]
-* **Número de Estudante:** [1241381]
+* **Nome:** Sofia Vieira Velho Cabral
+* **Número de Estudante:** 1241381
 * **Instituição:** Instituto Superior de Engenharia do Porto (ISEP)
 * **Curso:** Engenharia Biomédica (LEBIOM)
 
