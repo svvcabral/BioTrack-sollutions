@@ -1,4 +1,4 @@
-# BioTrack solutions 🏥
+# BioTrack solutions 
 
 ## Sobre o Projeto
 O **BioTrack solutions** é um protótipo de sistema de informação desenvolvido no âmbito da unidade curricular de SIBDAS (Sistemas de Informação e Bases de Dados em Saúde) da Licenciatura em Engenharia Biomédica no ISEP. 
