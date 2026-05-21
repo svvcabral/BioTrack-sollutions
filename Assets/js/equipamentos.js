@@ -14,7 +14,7 @@ const formulario = document.getElementById('form-equipamento');
 function renderizarTabela() {
     tabelaBody.innerHTML = '';
     
-    equipamentos.forEach(equip => {
+    equipamentos.forEach((equip, index) => {
         let badgeClass = "bg-primary";
         if (equip.criticidade === "Suporte de Vida") badgeClass = "bg-danger";
         if (equip.criticidade === "Alta") badgeClass = "bg-warning text-dark";
@@ -27,12 +27,22 @@ function renderizarTabela() {
                 <td>${equip.localizacao}</td>
                 <td><span class="badge ${badgeClass}">${equip.criticidade}</span></td>
                 <td class="px-4 text-end">
-                    <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="apagarEquipamento(${index})">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </td>
             </tr>
         `;
         tabelaBody.innerHTML += linha;
     });
+}
+
+function apagarEquipamento(index) {
+    if (confirm("Tem a certeza que deseja remover este equipamento do inventário?")) {
+        equipamentos.splice(index, 1);
+        localStorage.setItem('bd_equipamentos', JSON.stringify(equipamentos));
+        renderizarTabela();
+    }
 }
 
 formulario.addEventListener('submit', function(evento) {
@@ -45,6 +55,13 @@ formulario.addEventListener('submit', function(evento) {
         criticidade: document.getElementById('input-criticidade').value,
         localizacao: document.getElementById('input-localizacao').value
     };
+
+    // Verificação simples para não duplicar códigos
+    const codigoExiste = equipamentos.find(eq => eq.codigo === novoEquipamento.codigo);
+    if (codigoExiste) {
+        alert("Erro: Já existe um equipamento com este Código/Número de Série.");
+        return;
+    }
 
     equipamentos.push(novoEquipamento);
     localStorage.setItem('bd_equipamentos', JSON.stringify(equipamentos));
