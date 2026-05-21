@@ -1,23 +1,87 @@
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 70px;
+:root {
+    --bs-primary: #009eb5; 
+    --bs-secondary: #007a8c;
+    --bs-body-bg: #f8f9fa; 
+    --bs-body-color: #333333; 
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
-    color: #333333;
+body, body.bg-light {
+    background-color: var(--bs-body-bg) !important;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-section {
-    min-height: 60vh;
+body, p, h1, h2, h3, h4, h5, h6, label, td, th {
+    color: var(--bs-body-color) !important;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.bg-primary { 
+    background-color: var(--bs-primary) !important; 
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 500;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ffffff !important;
+}
+
+.navbar-dark .navbar-nav .nav-link.active {
+    font-weight: bold;
+    color: #ffffff !important;
+    border-bottom: 2px solid #ffffff;
 }
 
 .navbar-brand {
-    font-weight: 700;
+    font-size: 1.4rem;
     letter-spacing: 0.5px;
 }
 
 .card {
-    border-left: 4px solid #0d6efd;
+    border-radius: 10px !important;
+    border: 1px solid #e9ecef !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04) !important;
+}
+
+.table-light {
+    background-color: #eef5f6 !important;
+}
+
+.table th {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    color: #555555 !important;
+}
+
+.btn {
+    border-radius: 8px !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary { 
+    background-color: var(--bs-primary) !important; 
+    border-color: var(--bs-primary) !important; 
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--bs-secondary) !important;
+    border-color: var(--bs-secondary) !important;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 0.25rem rgba(0, 158, 181, 0.25);
+}
+
+body.pagina-login {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e0f2f4 100%);
 }

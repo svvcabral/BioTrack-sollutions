@@ -3,95 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioTrack solutions - Inventário Hospitalar</title>
+    <title>BioTrack solutions - Gestão Hospitalar Inteligente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/1241381.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Ajustes específicos para a página inicial ao estilo PeekMed */
+        .navbar { padding: 1.5rem 0; background-color: #f8f9fa !important; }
+        .hero-section { padding: 6rem 0; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef; }
+        .hero-title { font-size: 3.5rem; font-weight: 800; color: #1a1a1a !important; line-height: 1.1; }
+        .hero-subtitle { font-size: 1.25rem; color: #6c757d; margin-top: 1.5rem; margin-bottom: 2.5rem; }
+        .feature-icon { font-size: 2.5rem; color: var(--bs-primary); margin-bottom: 1.5rem; }
+        .section-padding { padding: 5rem 0; }
+        .btn-lg { padding: 0.8rem 2rem; font-size: 1rem; border-radius: 50px !important; }
+        .stats-number { font-size: 3.5rem; font-weight: 800; color: var(--bs-primary) !important; }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#inicio">
-                <i class="fas fa-heartbeat me-2"></i>BioTrack solutions
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="fas fa-map-marker-alt text-primary fs-3 me-2"></i>
+                <span class="fw-bold fs-4 text-dark" style="letter-spacing: -1px;">BioTrack <span class="fw-normal text-muted fs-5">solutions</span></span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contactos">Contactos</a></li>
-                    <li class=""nav-item ms-lg-3 mt-2 mt-lg-0"> 
-                        <a class="btn btn-primary w-100" href="login.html"> 
-                            <i class="fas fa-sign-in-alt me-1"></i> Acesso Restrito
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center gap-3">
+                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#produtos">Soluções</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#sobre">A Empresa</a></li>
+                    <li class="nav-item">
+                        <a href="login.html" class="btn btn-primary fw-bold ms-3 px-4" style="border-radius: 50px;">
+                            Sign-in / Registo
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <main class="container my-5">
-        <section id="inicio" class="py-5 text-center bg-light rounded-3 shadow-sm mb-5">
-            <div class="py-5">
-                <h1 class="display-5 fw-bold">Bem-vindo à BioTrack solutions</h1>
-                <p class="lead col-lg-8 mx-auto text-muted">A tua plataforma avançada de gestão de inventário hospitalar para Engenharia Biomédica.</p>
-            </div>
-        </section>
-        <section id="sobre" class="py-5 mb-4">
-            <h2 class="border-bottom pb-2"><i class="fas fa-info-circle me-2"></i>Sobre Nós</h2>
-            <p class="fs-5 text-secondary">A BioTrack solutions é uma empresa especializada no desenvolvimento de sistemas de informação e engenharia de software para a área da saúde. O nosso foco central é mitigar os problemas de dispersão de dados em unidades hospitalares através da centralização tecnológica estruturada.</p>
-        </section>
-        <section id="servicos" class="py-5 mb-4">
-            <h2 class="border-bottom pb-2"><i class="fas fa-cogs me-2"></i>Os Nossos Serviços</h2>
-            <div class="accordion mt-4" id="accordionServicos">
-                <div class="accordion-item">
-                    <h3 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                            <strong>Módulo de Equipamentos e Rastreabilidade</strong>
-                        </button>
-                    </h3>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionServicos">
-                        <div class="accordion-body text-secondary">
-                            Controlo rigoroso do ciclo de vida tecnológico de dispositivos médicos. Monitorização ativa de parâmetros fulcrais como o identificador interno único de inventário, marca, modelo, número de série, ano de fabrico, estado operacional e classificação de criticidade clínica para suporte de vida.
-                        </div>
+
+    <section class="hero-section text-center text-md-start">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title">A solução tudo-em-um para a sua gestão hospitalar</h1>
+                    <p class="hero-subtitle">Desfrute de um inventário simplificado com o nosso sistema, concebido para mitigar os problemas de dispersão de dados no ciclo de vida de dispositivos médicos.</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-md-start">
+                        <a href="login.html" class="btn btn-primary btn-lg fw-bold shadow-sm">Começar Agora</a>
+                        <a href="#sobre" class="btn btn-outline-secondary btn-lg fw-bold">Pedir Demo</a>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <h3 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                            <strong>Gestão Documental e de Fornecedores</strong>
-                        </button>
-                    </h3>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionServicos">
-                        <div class="accordion-body text-secondary">
-                            Centralização de repositórios técnicos incluindo manuais de utilizador, certificados de calibração, contratos de manutenção preventiva e relatórios técnicos de intervenção. Associação unívoca a fabricantes, distribuidores comerciais e entidades externas de assistência técnica autorizadas.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h3 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                            <strong>Arquitetura de Apoio ao Sistema GMAC</strong>
-                        </button>
-                    </h3>
-                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionServicos">
-                        <div class="accordion-body text-secondary">
-                            Desenvolvimento de uma infraestrutura conceptual e relacional robusta que serve de alicerce para uma futura implementação de sistemas CMMS/GMAC (Computerized Maintenance Management System), otimizando o planeamento orçamental e a gestão de risco hospitalar.
-                        </div>
+                <div class="col-lg-6 mt-5 mt-lg-0 text-center">
+                    <div class="bg-white p-4 shadow-sm" style="border-radius: 20px; border: 1px solid #e9ecef;">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hospital Management" class="img-fluid rounded" style="opacity: 0.9;">
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="contactos" class="py-5 mb-4">
-            <h2 class="border-bottom pb-2"><i class="fas fa-envelope me-2"></i>Contactos</h2>
-            <div class="card p-4 shadow-sm bg-body">
-                <p class="mb-1"><strong>Email:</strong> suporte@biotrack.isep.ipp.pt</p>
-                <p class="mb-0"><strong>Localização:</strong> ISEP - LEBIOM, Porto</p>
+        </div>
+    </section>
+
+    <section id="produtos" class="section-padding bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Espreite a Excelência</h2>
+                <p class="text-muted fs-5">O que pode fazer com o sistema BioTrack</p>
             </div>
-        </section>
-    </main>
+            <div class="row g-5">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body px-0">
+                            <i class="fas fa-boxes feature-icon"></i>
+                            <h4 class="fw-bold">Gestão sem esforço</h4>
+                            <p class="text-muted">Controle o inventário de equipamentos baseado em níveis de criticidade, garantindo precisão em cada movimento do hospital.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body px-0">
+                            <i class="fas fa-handshake feature-icon"></i>
+                            <h4 class="fw-bold">Rede de Parceiros</h4>
+                            <p class="text-muted">Desbloqueie o poder da gestão integrada de fornecedores e parceiros de assistência técnica numa única plataforma.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 bg-transparent">
+                        <div class="card-body px-0">
+                            <i class="fas fa-map-marker-alt feature-icon"></i>
+                            <h4 class="fw-bold">Rastreabilidade Total</h4>
+                            <p class="text-muted">Explore a localização automática por serviços e pisos, fornecendo um roteiro claro de onde as máquinas vitais se encontram.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="section-padding" style="background-color: #f8f9fa;">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Impacto do BioTrack</h2>
+            <p class="text-muted w-75 mx-auto mb-5">Não se trata apenas de inventário, trata-se de capacitar os engenheiros biomédicos e gestores a obterem resultados notáveis e reduzirem o tempo de paragem de equipamentos de suporte de vida.</p>
+            
+            <div class="row g-4 mt-2">
+                <div class="col-md-4">
+                    <h2 class="stats-number">350+</h2>
+                    <p class="fw-bold text-dark">Equipamentos Geridos</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="stats-number">24/7</h2>
+                    <p class="fw-bold text-dark">Monitorização Ativa</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="stats-number">100%</h2>
+                    <p class="fw-bold text-dark">Conformidade Clínica</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white py-5 border-top">
+        <div class="container text-center">
+            <p class="fw-bold text-dark mb-1">© 2026 BioTrack solutions. Todos os direitos reservados.</p>
+            <p class="text-muted small">Projeto desenvolvido em SIBDAS - Engenharia Biomédica, ISEP</p>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
