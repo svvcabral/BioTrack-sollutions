@@ -9,8 +9,8 @@ formLogin.addEventListener('submit', function(evento) {
     const password = document.getElementById('password').value;
 
     // Credenciais de simulação para o professor testar
-    const emailCorreto = "admin@biotrack.com";
-    const passwordCorreta = "sofia4";
+    const emailCorreto = "admin@biotrack.pt";
+    const passwordCorreta = "123456";
 
     if (email === emailCorreto && password === passwordCorreta) {
         // Se acertou, regista a sessão no browser e entra
