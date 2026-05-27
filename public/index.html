@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="../assets/css/1241381.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Ajustes específicos para a página inicial ao estilo PeekMed */
+        /* Estilos gerais da página inspirados na PeekMed */
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
         .navbar { padding: 1.5rem 0; background-color: #f8f9fa !important; }
         .hero-section { padding: 6rem 0; background-color: #f8f9fa; border-bottom: 1px solid #e9ecef; }
         .hero-title { font-size: 3.5rem; font-weight: 800; color: #1a1a1a !important; line-height: 1.1; }
@@ -17,6 +19,18 @@
         .section-padding { padding: 5rem 0; }
         .btn-lg { padding: 0.8rem 2rem; font-size: 1rem; border-radius: 50px !important; }
         .stats-number { font-size: 3.5rem; font-weight: 800; color: var(--bs-primary) !important; }
+        
+        /* Ajustes específicos para as caixas de texto do formulário semelhantes à imagem */
+        .form-custom-input {
+            background-color: #e9ecef !important;
+            border: none !important;
+            border-radius: 8px !important;
+            color: #333333 !important;
+        }
+        .form-custom-input:focus {
+            background-color: #e2e5e7 !important;
+            box-shadow: 0 0 0 0.25rem rgba(0, 158, 181, 0.15) !important;
+        }
     </style>
 </head>
 <body>
@@ -34,6 +48,7 @@
                 <ul class="navbar-nav align-items-center gap-3">
                     <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#produtos">Soluções</a></li>
                     <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#sobre">A Empresa</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#contacto">Contacto</a></li>
                     <li class="nav-item">
                         <a href="login.html" class="btn btn-primary fw-bold ms-3 px-4" style="border-radius: 50px;">
                             Sign-in / Registo
@@ -49,10 +64,10 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <h1 class="hero-title">A solução tudo-em-um para a sua gestão hospitalar</h1>
-                    <p class="hero-subtitle">Desfrute de um inventário simplificado com o nosso sistema, concebido para mitigar os problemas de dispersão de dados no ciclo de vida de dispositivos médicos.</p>
+                    <p class="hero-subtitle">Desfrute de um inventário simplificado com o nosso system, concebido para mitigar os problemas de dispersão de dados no ciclo de vida de dispositivos médicos.</p>
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-md-start">
                         <a href="login.html" class="btn btn-primary btn-lg fw-bold shadow-sm">Começar Agora</a>
-                        <a href="#sobre" class="btn btn-outline-secondary btn-lg fw-bold">Pedir Demo</a>
+                        <a href="#contacto" class="btn btn-outline-secondary btn-lg fw-bold">Contactar</a>
                     </div>
                 </div>
                 <div class="col-lg-6 mt-5 mt-lg-0 text-center">
@@ -105,7 +120,7 @@
     <section id="sobre" class="section-padding" style="background-color: #f8f9fa;">
         <div class="container text-center">
             <h2 class="fw-bold mb-4">Impacto do BioTrack</h2>
-            <p class="text-muted w-75 mx-auto mb-5">Não se trata apenas de inventário, trata-se de capacitar os engenheiros biomédicos e gestores a obterem resultados notáveis e reduzirem o tempo de paragem de equipamentos de suporte de vida.</p>
+            <p class="text-muted w-75 mx-auto mb-5">Não se trata apenas de inventário; trata-se de capacitar os engenheiros biomédicos e gestores para obterem resultados notáveis e reduzirem o tempo de paragem de equipamentos de suporte de vida.</p>
             
             <div class="row g-4 mt-2">
                 <div class="col-md-4">
@@ -119,6 +134,41 @@
                 <div class="col-md-4">
                     <h2 class="stats-number">100%</h2>
                     <p class="fw-bold text-dark">Conformidade Clínica</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section-padding bg-white">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3 text-dark">Contacto</h2>
+                <p class="text-muted fs-5 w-75 mx-auto">Entre em contacto connosco para tirar as suas dúvidas ou solicitar uma demonstração da plataforma.</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm" style="background-color: #f8f9fa; border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <form>
+                                <div class="mb-4">
+                                    <label for="nomeContacto" class="form-label fw-bold text-dark">Nome:</label>
+                                    <input type="text" class="form-control form-control-lg form-custom-input" id="nomeContacto" placeholder="Ex: Centro Hospitalar do Porto">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="emailContacto" class="form-label fw-bold text-dark">Email:</label>
+                                    <input type="email" class="form-control form-control-lg form-custom-input" id="emailContacto" placeholder="Ex: engenharia.biomedica@hospital.pt">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="mensagemContacto" class="form-label fw-bold text-dark">Mensagem:</label>
+                                    <textarea class="form-control form-control-lg form-custom-input" id="mensagemContacto" rows="4" placeholder="Ex: Gostaria de solicitar uma demonstração das soluções de inventário..."></textarea>
+                                </div>
+                                <div class="text-end mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg fw-bold px-5" style="border-radius: 50px;">Enviar Mensagem</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
