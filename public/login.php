@@ -51,7 +51,7 @@
     <div class="container login-container">
         <div class="card login-card p-4 p-md-5">
             <div class="text-center mb-4">
-                <a href="index.html" class="d-flex align-items-center justify-content-center text-decoration-none mb-2">
+                <a href="index.php" class="d-flex align-items-center justify-content-center text-decoration-none mb-2">
                     <img src="../assets/img/logo_ciano.png"  height="40" class="me-2">
                     <span class="fw-bold fs-3 text-dark" style="letter-spacing: -1px;">BioTrack</span>
                 </a>
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="text-center mt-4">
-                    <a href="index.html" class="text-decoration-none small text-muted fw-medium">
+                    <a href="index.php" class="text-decoration-none small text-muted fw-medium">
                         <i class="fas fa-arrow-left me-1"></i> Voltar à página inicial
                     </a>
                 </div>
@@ -105,7 +105,7 @@
                 alerta.classList.remove('d-none');
             } else {
                 alerta.classList.add('d-none');
-                window.location.href = "../private/dashboard.html";
+                window.location.href = "../private/dashboard.php";
             }
         });
     </script>

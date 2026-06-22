@@ -46,7 +46,7 @@
 
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img src="../assets/img/logo_ciano.png"  height="35" class="me-2">
                 <span class="fw-bold fs-4 text-dark" style="letter-spacing: -1px;">BioTrack <span class="fw-normal text-muted fs-5">solutions</span></span>
             </a>
@@ -59,7 +59,7 @@
                     <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#visao">A Visão</a></li>
                     <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#contacto">Contacto</a></li>
                     <li class="nav-item">
-                        <a href="login.html" class="btn btn-primary fw-bold ms-3 px-4" style="border-radius: 50px;">
+                        <a href="login.php" class="btn btn-primary fw-bold ms-3 px-4" style="border-radius: 50px;">
                             Sign-in / Registo
                         </a>
                     </li>
@@ -75,7 +75,7 @@
                     <h1 class="hero-title">A nova era da gestão de <span class="text-primary">Tecnologia Médica</span></h1>
                     <p class="hero-subtitle">Mapeamento em tempo real, gestão de ciclo de vida e mitigação de falhas para dispositivos médicos de suporte crítico.</p>
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-md-start mt-4">
-                        <a href="login.html" class="btn btn-primary btn-lg fw-bold shadow-sm">Aceder ao Sistema</a>
+                        <a href="login.php" class="btn btn-primary btn-lg fw-bold shadow-sm">Aceder ao Sistema</a>
                         <a href="#contacto" class="btn btn-outline-secondary btn-lg fw-bold">Contactar</a>
                     </div>
                 </div>

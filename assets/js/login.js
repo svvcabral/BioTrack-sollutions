@@ -15,7 +15,7 @@ formLogin.addEventListener('submit', function(evento) {
     if (email === emailCorreto && password === passwordCorreta) {
         // Se acertou, regista a sessão no browser e entra
         localStorage.setItem('biotrack_sessao', 'ativa');
-        window.location.href = '../private/dashboard.html';
+        window.location.href = '../private/dashboard.php';
     } else {
         // Se errou, mostra a caixa vermelha de erro
         msgErro.textContent = "Acesso Negado: Email ou palavra-passe incorretos.";

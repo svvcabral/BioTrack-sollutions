@@ -16,7 +16,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="dashboard.html">
+            <a class="navbar-brand d-flex align-items-center" href="dashboard.php">
                <img src="../assets/img/logo_branco.png" alt="BioTrack Logo" height="30" class="me-2">
                 <span class="fw-bold text-white">BioTrack</span>
             </a>
@@ -25,15 +25,15 @@
             </button>
             <div class="collapse navbar-collapse" id="sidebarMenu">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="equipamentos.html">Equipamentos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="fornecedores.html">Fornecedores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="localizacoes.html">Localizações</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="backoffice_publico.html">Portal Público</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="equipamentos.php">Equipamentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fornecedores.php">Fornecedores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="localizacoes.php">Localizações</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="backoffice_publico.php">Portal Público</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white fw-bold" href="../public/index.html">
+                        <a class="nav-link text-white fw-bold" href="../public/index.php">
                             <i class="fas fa-sign-out-alt me-1"></i> Sair
                         </a>
                     </li>
@@ -48,7 +48,7 @@
                 <h1 class="h2 fw-bold mb-1">Gestão do Portal Público</h1>
                 <p class="text-muted mb-0">Edite os textos e informações apresentados na página inicial (Front Office)</p>
             </div>
-            <a href="../public/index.html" target="_blank" class="btn btn-outline-secondary fw-bold">
+            <a href="../public/index.php" target="_blank" class="btn btn-outline-secondary fw-bold">
                 <i class="fas fa-external-link-alt me-2"></i>Ver Site Público
             </a>
         </div>

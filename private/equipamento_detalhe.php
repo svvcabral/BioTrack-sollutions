@@ -12,7 +12,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="dashboard.html">
+            <a class="navbar-brand d-flex align-items-center" href="dashboard.php">
                 <img src="../assets/img/logo_branco.png" alt="BioTrack Logo" height="30" class="me-2">
                 <span class="fw-bold text-white">BioTrack</span>
             </a>
@@ -21,14 +21,14 @@
             </button>
             <div class="collapse navbar-collapse" id="sidebarMenu">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="equipamentos.html">Equipamentos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="fornecedores.html">Fornecedores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="localizacoes.html">Localizações</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="equipamentos.php">Equipamentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fornecedores.php">Fornecedores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="localizacoes.php">Localizações</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white fw-bold" href="../public/index.html">
+                        <a class="nav-link text-white fw-bold" href="../public/index.php">
                             <i class="fas fa-sign-out-alt me-1"></i> Sair
                         </a>
                     </li>
@@ -40,7 +40,7 @@
     <main class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <a href="equipamentos.html" class="text-decoration-none text-muted mb-2 d-inline-block fw-medium">
+                <a href="equipamentos.php" class="text-decoration-none text-muted mb-2 d-inline-block fw-medium">
                     <i class="fas fa-arrow-left me-1"></i> Voltar à lista de equipamentos
                 </a>
                 <h1 class="h2 fw-bold mb-1">Monitor Multiparamétrico</h1>
