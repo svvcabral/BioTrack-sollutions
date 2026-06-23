@@ -1,42 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fornecedores - BioTrack solutions</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/1241381.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body class="bg-light">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="dashboard.php">
-                <img src="../assets/img/logo_branco.png" alt="BioTrack Logo" height="30" class="me-2">
-                <span class="fw-bold text-white">BioTrack</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="sidebarMenu">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="dashboard.php">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="equipamentos.php">Equipamentos</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="fornecedores.php">Fornecedores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="localizacoes.php">Localizações</a></li>
-                    <li class="nav-item"><a class="nav-link" href="backoffice_publico.php">Portal Público</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-bold" href="../public/index.php">
-                            <i class="fas fa-sign-out-alt me-1"></i> Sair
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<?php
+$pageTitle = 'Fornecedores';
+$activePage = 'fornecedores';
 
+include __DIR__ . '/includes/header.php';
+include __DIR__ . '/includes/nav.php';
+?>
+    
     <main class="container my-5">
         <div class="mb-4">
             <h1 class="h2 fw-bold mb-1">Gestão de Fornecedores</h1>
@@ -117,7 +86,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/fornecedores.js"></script>
-</body>
-</html>
+
+<?php include __DIR__ . '/includes/footer.php'; ?>
