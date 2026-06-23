@@ -1,3 +1,13 @@
+<?php
+require_once __DIR__ . '/../private/includes/funcoes.php';
+
+iniciar_sessao();
+
+$erros = $_SESSION['validation_errors'] ?? [];
+$erroServidor = $_SESSION['server_error'] ?? '';
+
+unset($_SESSION['validation_errors'], $_SESSION['server_error']);
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -58,16 +68,26 @@
                 <p class="text-muted small">Sistemas de Informação Hospitalar</p>
             </div>
 
-            <div id="alerta-erro" class="alert alert-danger d-none text-center fw-bold small" role="alert" style="border-radius: 10px;">
-                <i class="fas fa-exclamation-circle me-2"></i> Por favor, preencha todos os campos corretamente.
-            </div>
+            <?php if (!empty($erros) || $erroServidor !== ''): ?>
+    <div class="alert alert-danger small" role="alert">
+        <i class="fas fa-exclamation-circle me-2"></i>
 
-            <form id="form-login">
+        <?php foreach ($erros as $erro): ?>
+            <div><?php echo htmlspecialchars($erro); ?></div>
+        <?php endforeach; ?>
+
+        <?php if ($erroServidor !== ''): ?>
+            <div><?php echo htmlspecialchars($erroServidor); ?></div>
+        <?php endif; ?>
+    </div>
+<?php endif; ?>
+
+            <form id="form-login" action="../private/processa_login.php" method="post">
                 <div class="mb-3">
                     <label for="inputEmail" class="form-label fw-bold text-dark small">Utilizador ou Email:</label>
                     <div class="input-group">
                         <span class="input-group-text bg-light border-0 text-muted"><i class="fas fa-user"></i></span>
-                        <input type="text" class="form-control form-custom-input" id="inputEmail" placeholder="ex: engenharia@biotrack.pt" required>
+                        <input type="email" class="form-control form-custom-input" id="inputEmail" name="text_username" placeholder="ex: engenharia@biotrack.pt" required>
                     </div>
                 </div>
 
@@ -75,7 +95,7 @@
                     <label for="inputPassword" class="form-label fw-bold text-dark small">Palavra-passe:</label>
                     <div class="input-group">
                         <span class="input-group-text bg-light border-0 text-muted"><i class="fas fa-lock"></i></span>
-                        <input type="password" class="form-control form-custom-input" id="inputPassword" placeholder="••••••••" required>
+                        <input type="password" class="form-control form-custom-input" id="inputPassword" name="text_password" placeholder="••••••••" required>
                     </div>
                 </div>
 
@@ -93,21 +113,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('form-login').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('inputEmail').value.trim();
-            const password = document.getElementById('inputPassword').value.trim();
-            const alerta = document.getElementById('alerta-erro');
-
-            if (email === "" || password === "") {
-                alerta.classList.remove('d-none');
-            } else {
-                alerta.classList.add('d-none');
-                window.location.href = "../private/dashboard.php";
-            }
-        });
-    </script>
+    
 </body>
 </html>

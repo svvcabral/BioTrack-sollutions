@@ -34,7 +34,7 @@ $activePage = $activePage ?? '';
 
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="../public/index.php">
+                    <a class="nav-link text-white fw-bold" href="../public/logout.php">
                         <i class="fas fa-sign-out-alt me-1"></i> Sair
                     </a>
                 </li>
