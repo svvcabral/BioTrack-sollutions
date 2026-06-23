@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/includes/funcoes.php';
+require_once __DIR__ . '/includes/database.php';
 
 iniciar_sessao();
 
@@ -28,20 +29,37 @@ if (!empty($erros)) {
     exit;
 }
 
-/*
- * Login temporário da Ficha 10.
- * Na ligação à base de dados será substituído por password_verify().
- */
-if ($username !== 'admin@biotrack.pt' || $password !== '123456') {
-    $_SESSION['server_error'] = 'Email ou palavra-passe incorretos.';
+try {
+    $ligacao = ligar_bd();
+
+    $sql = 'SELECT id_utilizador, nome, email, palavra_passe, perfil
+            FROM utilizadores
+            WHERE email = :email AND ativo = TRUE
+            LIMIT 1';
+
+    $stmt = $ligacao->prepare($sql);
+    $stmt->bindValue(':email', $username);
+    $stmt->execute();
+
+    $utilizador = $stmt->fetch();
+
+    if (!$utilizador || !password_verify($password, $utilizador['palavra_passe'])) {
+        $_SESSION['server_error'] = 'Email ou palavra-passe incorretos.';
+        header('Location: ' . BASE_URL . '/public/login.php');
+        exit;
+    }
+} catch (PDOException $erro) {
+    $_SESSION['server_error'] = 'Não foi possível ligar à base de dados.';
     header('Location: ' . BASE_URL . '/public/login.php');
     exit;
 }
 
 session_regenerate_id(true);
 
-$_SESSION['utilizador'] = $username;
-$_SESSION['perfil'] = 'administrador';
+$_SESSION['id_utilizador'] = $utilizador['id_utilizador'];
+$_SESSION['utilizador'] = $utilizador['email'];
+$_SESSION['nome_utilizador'] = $utilizador['nome'];
+$_SESSION['perfil'] = $utilizador['perfil'];
 
 header('Location: ' . BASE_URL . '/private/dashboard.php');
 exit;
