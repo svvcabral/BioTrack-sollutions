@@ -1,0 +1,153 @@
+Table utilizadores {
+  id_utilizador int [pk, increment]
+  nome varchar(100) [not null]
+  email varchar(150) [not null, unique]
+  palavra_passe varchar(255) [not null]
+  perfil varchar(30) [not null, default: 'tecnico']
+  ativo boolean [not null, default: true]
+  ultimo_login datetime
+  criado_em datetime [not null]
+}
+
+Table categorias {
+  id_categoria int [pk, increment]
+  nome varchar(100) [not null, unique]
+  descricao varchar(255)
+}
+
+Table localizacoes {
+  id_localizacao int [pk, increment]
+  edificio varchar(100) [not null]
+  piso varchar(30) [not null]
+  servico varchar(100) [not null]
+  sala varchar(50)
+  ativo boolean [not null, default: true]
+}
+
+Table fornecedores {
+  id_fornecedor int [pk, increment]
+  nome varchar(150) [not null]
+  nif varchar(9) [not null, unique]
+  telefone varchar(20)
+  email varchar(150)
+  morada varchar(255)
+  website varchar(200)
+  pessoa_contacto varchar(100)
+  telefone_contacto varchar(20)
+  tipo varchar(50) [not null]
+  observacoes text
+  ativo boolean [not null, default: true]
+  criado_em datetime [not null]
+}
+
+Table equipamentos {
+  id_equipamento int [pk, increment]
+  codigo_interno varchar(50) [not null, unique]
+  designacao varchar(150) [not null]
+  id_categoria int [not null]
+  marca varchar(100) [not null]
+  modelo varchar(100) [not null]
+  numero_serie varchar(100) [not null]
+  fabricante varchar(150) [not null]
+  data_aquisicao date
+  ano_fabrico int
+  custo_aquisicao decimal(12,2)
+  tipo_entrada varchar(30) [not null]
+  estado varchar(30) [not null]
+  criticidade varchar(30) [not null]
+  observacoes text
+  id_localizacao int [not null]
+  ativo boolean [not null, default: true]
+  criado_em datetime [not null]
+
+  indexes {
+    (fabricante, modelo, numero_serie) [unique]
+  }
+}
+
+Table equipamentos_fornecedores {
+  id_equipamento int [not null]
+  id_fornecedor int [not null]
+  funcao varchar(50) [not null]
+  data_inicio date
+  data_fim date
+
+  indexes {
+    (id_equipamento, id_fornecedor, funcao) [pk]
+  }
+}
+
+Table documentos {
+  id_documento int [pk, increment]
+  tipo varchar(60) [not null]
+  nome varchar(150) [not null]
+  data_documento date
+  data_validade date
+  caminho_ficheiro varchar(255) [not null]
+  id_equipamento int [not null]
+  id_fornecedor int
+  criado_em datetime [not null]
+}
+
+Table garantias {
+  id_garantia int [pk, increment]
+  id_equipamento int [not null]
+  data_inicio date [not null]
+  data_fim date [not null]
+  entidade_responsavel varchar(150)
+  observacoes text
+}
+
+Table contratos_manutencao {
+  id_contrato int [pk, increment]
+  id_equipamento int [not null]
+  id_fornecedor int [not null]
+  tipo_contrato varchar(100) [not null]
+  data_inicio date [not null]
+  data_fim date
+  periodicidade varchar(50)
+  observacoes text
+  ativo boolean [not null, default: true]
+}
+
+Table conteudos_publicos {
+  id_conteudo int [pk, increment]
+  chave varchar(100) [not null, unique]
+  titulo varchar(200)
+  conteudo text [not null]
+  atualizado_em datetime [not null]
+  atualizado_por int [not null]
+}
+
+Table logs {
+  id_log int [pk, increment]
+  id_utilizador int
+  evento varchar(100) [not null]
+  entidade varchar(60)
+  id_registo int
+  detalhes text
+  endereco_ip varchar(45)
+  criado_em datetime [not null]
+}
+
+Ref: equipamentos.id_categoria > categorias.id_categoria
+
+Ref: equipamentos.id_localizacao > localizacoes.id_localizacao
+
+Ref: equipamentos_fornecedores.id_equipamento > equipamentos.id_equipamento
+
+Ref: equipamentos_fornecedores.id_fornecedor > fornecedores.id_fornecedor
+
+Ref: documentos.id_equipamento > equipamentos.id_equipamento
+
+Ref: documentos.id_fornecedor > fornecedores.id_fornecedor
+
+Ref: garantias.id_equipamento > equipamentos.id_equipamento
+
+Ref: contratos_manutencao.id_equipamento > equipamentos.id_equipamento
+
+Ref: contratos_manutencao.id_fornecedor > fornecedores.id_fornecedor
+
+Ref: conteudos_publicos.atualizado_por > utilizadores.id_utilizador
+
+Ref: logs.id_utilizador > utilizadores.id_utilizador
