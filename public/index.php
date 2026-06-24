@@ -1,3 +1,35 @@
+<?php
+require_once __DIR__ . '/../private/includes/database.php';
+
+function h(string $valor): string
+{
+    return htmlspecialchars($valor, ENT_QUOTES, 'UTF-8');
+}
+
+$conteudos = [
+    'hero' => ['titulo' => 'A nova era da gestão de Tecnologia Médica', 'conteudo' => 'Mapeamento em tempo real, gestão de ciclo de vida e mitigação de falhas para dispositivos médicos de suporte crítico.'],
+    'visao' => ['titulo' => 'Da Engenharia Biomédica para a Prática Clínica', 'conteudo' => 'Como estudante de Engenharia Biomédica no ISEP, desenhei o BioTrack não apenas como um repositório de dados, mas como uma ponte crítica entre a tecnologia e o cuidado ao paciente.'],
+    'autor_nome' => ['conteudo' => 'Sofia'],
+    'autor_papel' => ['conteudo' => 'Autora do Projeto • SIBDAS 2026'],
+    'contacto_email' => ['conteudo' => 'suporte@biotrack.pt'],
+    'contacto_telefone' => ['conteudo' => '+351 228 340 500'],
+    'contacto_morada' => ['conteudo' => "Rua Dr. António Bernardino de Almeida\n4200-072, Porto\nPortugal"],
+    'horario_semana' => ['conteudo' => '2ª a 6ª Feira: 09h — 17h'],
+    'horario_sabado' => ['conteudo' => 'Sábados: 09h — 13h'],
+    'horario_domingo' => ['conteudo' => 'Domingos / Feriados: Encerrado'],
+];
+
+try {
+    $registos = ligar_bd()->query(
+        'SELECT chave, titulo, conteudo FROM conteudos_publicos'
+    )->fetchAll(PDO::FETCH_UNIQUE | PDO::FETCH_ASSOC);
+    foreach ($registos as $chave => $registo) {
+        $conteudos[$chave] = array_merge($conteudos[$chave] ?? [], $registo);
+    }
+} catch (PDOException $erro) {
+    error_log('Falha ao carregar conteúdos públicos: ' . $erro->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -77,8 +109,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h1 class="hero-title">A nova era da gestão de <span class="text-primary">Tecnologia Médica</span></h1>
-                    <p class="hero-subtitle">Mapeamento em tempo real, gestão de ciclo de vida e mitigação de falhas para dispositivos médicos de suporte crítico.</p>
+                    <h1 class="hero-title"><?= h($conteudos['hero']['titulo']) ?></h1>
+                    <p class="hero-subtitle"><?= h($conteudos['hero']['conteudo']) ?></p>
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-md-start mt-4">
                         <a href="login.php" class="btn btn-primary btn-lg fw-bold shadow-sm">Aceder ao Sistema</a>
                         <a href="#contacto" class="btn btn-outline-secondary btn-lg fw-bold">Contactar</a>
@@ -161,14 +193,14 @@
             <div class="row justify-content-center text-center">
                 <div class="col-lg-8">
                     <i class="fas fa-quote-left text-white opacity-50 mb-4" style="font-size: 3rem;"></i>
-                    <h2 class="fw-bold text-white mb-4" style="letter-spacing: -0.5px;">Da Engenharia Biomédica para a Prática Clínica</h2>
+                    <h2 class="fw-bold text-white mb-4" style="letter-spacing: -0.5px;"><?= h($conteudos['visao']['titulo']) ?></h2>
                     <p class="text-white fs-5 lh-lg mb-0" style="font-weight: 300;">
-                        "Como estudante de Engenharia Biomédica no ISEP, desenhei o BioTrack não apenas como um repositório de dados, mas como uma ponte crítica entre a tecnologia e o cuidado ao paciente. O objetivo deste projeto é provar que uma gestão de informação bem estruturada garante que o equipamento certo está pronto a salvar vidas, no momento exato em que é preciso."
+                        “<?= h($conteudos['visao']['conteudo']) ?>”
                     </p>
                     <hr class="border-white opacity-25 my-5 mx-auto" style="width: 100px;">
                     <div class="text-white">
-                        <h6 class="fw-bold text-uppercase letter-spacing-1 mb-1">Sofia</h6>
-                        <p class="small opacity-75 mb-0">Autora do Projeto • SIBDAS 2026</p>
+                        <h6 class="fw-bold text-uppercase letter-spacing-1 mb-1"><?= h($conteudos['autor_nome']['conteudo']) ?></h6>
+                        <p class="small opacity-75 mb-0"><?= h($conteudos['autor_papel']['conteudo']) ?></p>
                     </div>
                 </div>
             </div>
@@ -220,22 +252,20 @@
             <div class="row text-center text-md-start">
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h6 class="text-uppercase fw-bold mb-4" style="letter-spacing: 1px; color: white !important;">Localização</h6>
-                    <p class="text-white-50 mb-1">Rua Dr. António Bernardino de Almeida</p>
-                    <p class="text-white-50 mb-1">4200-072, Porto</p>
-                    <p class="text-white-50 mb-0">Portugal</p>
+                    <p class="text-white-50 mb-0"><?= nl2br(h($conteudos['contacto_morada']['conteudo'])) ?></p>
                 </div>
                 
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h6 class="text-uppercase fw-bold mb-4" style="letter-spacing: 1px; color: white !important;">Suporte Técnico</h6>
-                    <p class="text-white-50 mb-1">2ª a 6ª Feira: 09h — 17h</p>
-                    <p class="text-white-50 mb-1">Sábados: 09h — 13h</p>
-                    <p class="text-white-50 mb-0">Domingos / Feriados: Encerrado</p>
+                    <p class="text-white-50 mb-1"><?= h($conteudos['horario_semana']['conteudo']) ?></p>
+                    <p class="text-white-50 mb-1"><?= h($conteudos['horario_sabado']['conteudo']) ?></p>
+                    <p class="text-white-50 mb-0"><?= h($conteudos['horario_domingo']['conteudo']) ?></p>
                 </div>
                 
                 <div class="col-md-4">
                     <h6 class="text-uppercase fw-bold mb-4" style="letter-spacing: 1px; color: white !important;">Contactos</h6>
-                    <p class="text-white-50 mb-1">Email: suporte@biotrack.pt</p>
-                    <p class="text-white-50 mb-0">Telefone: +351 228 340 500</p>
+                    <p class="text-white-50 mb-1">Email: <?= h($conteudos['contacto_email']['conteudo']) ?></p>
+                    <p class="text-white-50 mb-0">Telefone: <?= h($conteudos['contacto_telefone']['conteudo']) ?></p>
                 </div>
             </div>
             
@@ -248,19 +278,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('form-contacto').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            
-            const alerta = document.getElementById('alerta-sucesso');
-            alerta.classList.remove('d-none');
-            
-            this.reset();
-            
-            setTimeout(function() {
-                alerta.classList.add('d-none');
-            }, 5000);
-        });
-    </script>
+    <script src="../assets/js/1241381.js"></script>
 </body>
 </html>

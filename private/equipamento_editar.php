@@ -6,6 +6,7 @@ require_once __DIR__ . '/includes/validacoes.php';
 
 redirecionar_se_nao_autenticado();
 permitir_apenas_get_post();
+validar_csrf_post();
 
 $pageTitle = 'Editar Equipamento';
 $activePage = 'equipamentos';
@@ -146,6 +147,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':id_equipamento' => (int) $id_equipamento
             ]);
 
+            registar_log(
+                $ligacao,
+                'editar_equipamento',
+                'equipamentos',
+                (int) $id_equipamento,
+                $equipamento['codigo_interno'] . ' - ' . $equipamento['designacao']
+            );
             header('Location: equipamento_detalhe.php?id=' . urlencode($id_encriptado));
             exit;
         } catch (PDOException $erro) {
@@ -179,6 +187,7 @@ include __DIR__ . '/includes/nav.php';
     <div class="card border-0 shadow-sm">
         <div class="card-body p-4">
             <form action="equipamento_editar.php?id=<?= h($id_encriptado) ?>" method="post" novalidate>
+                <?= campo_csrf() ?>
 
                 <div class="row g-3">
                     <?php

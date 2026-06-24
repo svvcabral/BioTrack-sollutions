@@ -61,6 +61,7 @@ include __DIR__ . '/includes/nav.php';
             </dl>
 
             <form action="equipamento_apagar.php" method="post" class="d-flex justify-content-end gap-2">
+                <?= campo_csrf() ?>
                 <input type="hidden" name="id" value="<?= h($id_encriptado) ?>">
                 <a href="equipamentos.php" class="btn btn-outline-secondary">Cancelar</a>
                 <button type="submit" class="btn btn-danger">

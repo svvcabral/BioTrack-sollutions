@@ -1,0 +1,36 @@
+488e812 - Sofia Velho Cabral - 2026-06-24 10:44:55 +0100 - style: adicionar favicon BioTrack ao site
+55d579a - Sofia Velho Cabral - 2026-06-24 10:36:04 +0100 - feat: reorganizar navegação e secções da pagina publica
+3569bab - Sofia Velho Cabral - 2026-06-24 09:39:46 +0100 - content: atualizar horario do suporte tecnico
+b77f66f - Sofia Velho Cabral - 2026-06-24 07:36:53 +0100 - style: atualizar logotipos com fundo png
+0f42af2 - Sofia Velho Cabral - 2026-06-24 07:09:42 +0100 - feat: adicionar alteração de palavra-passe
+2f07b6a - Sofia Velho Cabral - 2026-06-24 06:27:44 +0100 - Merge remote-tracking branch 'origin/main'
+010998f - Sofia Velho Cabral - 2026-06-24 06:17:18 +0100 - feat: adicionar perfis, IDs seguros e arquivo
+89fe425 - Sofia Velho Cabral - 2026-06-24 02:07:20 +0100 - feat:implementar CRUD, filtros e edição segura
+185aaad - Sofia Velho Cabral - 2026-06-23 17:32:28 +0100 - feat: ligar autenticação à base de dados
+7e7e700 - Sofia Velho Cabral - 2026-06-23 17:08:35 +0100 - feat: criar modelo e scripts de base de dados
+ed97901 - Sofia Velho Cabral - 2026-06-23 11:50:28 +0100 - feat: implementar autenticação temporária e sessões php
+6115f5c - Sofia Velho Cabral - 2026-06-23 02:00:43 +0100 - refactor: aplicar layout reutilizável às páginas privadas
+e89bfc8 - Sofia Velho Cabral - 2026-06-23 01:46:56 +0100 - refactor: criar configuração e componentes PHP reutilizáveis
+08940fe - Sofia Velho Cabral - 2026-06-22 17:30:13 +0100 - refactor: converter páginas HTML para PHP
+2038316 - Sofia Velho Cabral - 2026-06-17 10:29:28 +0100 - chore: organizar estrutura de assets e limpar ficheiros do sistema
+1520c1b - Sofia Velho Cabral - 2026-05-27 08:31:04 +0100 - feat: adição do formulário de contacto
+1a95475 - Sofia Velho Cabral - 2026-05-21 18:59:22 +0100 - feat: criação e remoção de cartões de localização
+1c7ecc0 - Sofia Velho Cabral - 2026-05-21 16:00:40 +0100 - feat: criação do javascript de gestão de fornecedores
+81d15f8 - Sofia Velho Cabral - 2026-05-21 15:52:38 +0100 - feat: criação de script de validação para login com credenciais de administrador
+604913c - Sofia Velho Cabral - 2026-05-21 15:45:39 +0100 - feat: implementação de javascript para operação de criar e ler equipamentos
+ad901c2 - svvcabral - 2026-05-20 15:32:56 +0100 - Update README.md
+a170957 - svvcabral - 2026-05-20 14:37:54 +0100 - Update README.md
+96c3488 - Sofia Velho Cabral - 2026-05-20 14:36:16 +0100 - docs: criação do relatório do projeto em ficheiro README
+eb21dec - Sofia Velho Cabral - 2026-05-20 10:14:55 +0100 - feat: criação da página de localizações com vista em grelha
+29a4220 - Sofia Velho Cabral - 2026-05-20 10:12:04 +0100 - feat: criação da interface de gestão de fornecedores e parceiros técnicos
+7ef0ce3 - Sofia Velho Cabral - 2026-05-20 10:09:33 +0100 - feat: adição de modal bootstrap para o formulário de registo de novos equipamentos
+753240a - Sofia Velho Cabral - 2026-05-20 10:00:29 +0100 - feat: criação da interface de listagem e gestão de equipamentos médicos
+9f1b9bc - Sofia Velho Cabral - 2026-05-20 09:47:20 +0100 - chore: mover ficheiros publicos para a pasta correta public
+3d3cdca - Sofia Velho Cabral - 2026-05-20 09:42:09 +0100 - feat: implementação do dashboard de gestão com gráficos estatisticos interativos
+834d525 - Sofia Velho Cabral - 2026-05-20 09:29:49 +0100 - feat: criação da página de autenticação e adição de botão de acesso restrito
+4218170 - Sofia Velho Cabral - 2026-05-20 09:17:49 +0100 - chore: remoção de ficheiro pdf acidental da pasta public
+4a61878 - Sofia Velho Cabral - 2026-05-20 09:13:43 +0100 - feat: implementação de componente Accordion na secção de serviços e enriquecimento científico do conteúdo
+b6eb808 - Sofia Velho Cabral - 2026-05-20 09:08:30 +0100 - feat: criação do ficheiro css de estilos personalizados e configuração de scroll suave
+f24626e - Sofia Velho Cabral - 2026-05-20 09:02:47 +0100 - refactor: definir nome institucional da empresa para BioTrack Solutions
+26bc255 - Sofia Velho Cabral - 2026-05-20 08:55:22 +0100 - feat: integração de componentes responsivos e utilitários do Bootstrap
+8fdc10b - Sofia Cabral - 2026-05-20 08:30:22 +0100 - feat: estrutura inicial da pagina publica

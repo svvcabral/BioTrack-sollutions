@@ -4,6 +4,7 @@ require_once __DIR__ . '/includes/funcoes.php';
 require_once __DIR__ . '/includes/validacoes.php';
 
 redirecionar_se_nao_autenticado();
+validar_csrf_post();
 
 $pageTitle = 'Equipamentos';
 $activePage = 'equipamentos';
@@ -111,6 +112,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $ligacao instanceof PDO) {
                 ':id_localizacao' => (int) $valores['id_localizacao'],
             ]);
 
+            registar_log(
+                $ligacao,
+                'criar_equipamento',
+                'equipamentos',
+                (int) $ligacao->lastInsertId(),
+                $valores['codigo_interno'] . ' - ' . $valores['designacao']
+            );
             header('Location: equipamentos.php');
             exit;
         } catch (PDOException $err) {
@@ -216,8 +224,22 @@ include __DIR__ . '/includes/nav.php';
 
     <main class="container my-5">
         <div class="mb-4">
-            <h1 class="h2 fw-bold mb-1">Inventário de Equipamentos</h1>
-            <p class="text-muted mb-0">Gestão global de dispositivos médicos e rastreabilidade</p>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
+                <div>
+                    <h1 class="h2 fw-bold mb-1">Inventário de Equipamentos</h1>
+                    <p class="text-muted mb-0">Gestão global de dispositivos médicos e rastreabilidade</p>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-download me-2"></i>Exportar
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="exportar_equipamentos.php?formato=csv">CSV</a></li>
+                        <li><a class="dropdown-item" href="exportar_equipamentos.php?formato=json">JSON</a></li>
+                        <li><a class="dropdown-item" href="exportar_equipamentos.php?formato=pdf">PDF</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <div class="card border-0 shadow-sm bg-white">
@@ -442,6 +464,7 @@ include __DIR__ . '/includes/nav.php';
                     <?php endif; ?>
 
                     <form action="equipamentos.php" method="post" novalidate>
+                        <?= campo_csrf() ?>
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <label for="codigo_interno" class="form-label fw-bold text-dark">Código interno</label>

@@ -44,6 +44,7 @@ try {
     $utilizador = $stmt->fetch();
 
     if (!$utilizador || !password_verify($password, $utilizador['palavra_passe'])) {
+        registar_log($ligacao, 'login_falhado', 'utilizadores', null, 'Tentativa para o email: ' . $username);
         $_SESSION['server_error'] = 'Email ou palavra-passe incorretos.';
         header('Location: ' . BASE_URL . '/public/login.php');
         exit;
@@ -57,6 +58,8 @@ try {
     $stmt->execute([
         ':id_utilizador' => (int) $utilizador['id_utilizador']
     ]);
+    $_SESSION['id_utilizador'] = $utilizador['id_utilizador'];
+    registar_log($ligacao, 'login_sucesso', 'utilizadores', (int) $utilizador['id_utilizador'], $utilizador['email']);
 } catch (PDOException $erro) {
     $_SESSION['server_error'] = 'Não foi possível ligar à base de dados.';
     header('Location: ' . BASE_URL . '/public/login.php');

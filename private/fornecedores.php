@@ -4,6 +4,7 @@ require_once __DIR__ . '/includes/funcoes.php';
 require_once __DIR__ . '/includes/validacoes.php';
 
 redirecionar_se_nao_administrador();
+validar_csrf_post();
 
 $pageTitle = 'Fornecedores';
 $activePage = 'fornecedores';
@@ -308,6 +309,7 @@ include __DIR__ . '/includes/nav.php';
                     <?php endif; ?>
 
                     <form action="fornecedores.php" method="post" novalidate>
+                        <?= campo_csrf() ?>
                         <div class="row g-3">
                             <div class="col-md-8">
                                 <label for="nome" class="form-label fw-bold text-dark">Nome da empresa</label>

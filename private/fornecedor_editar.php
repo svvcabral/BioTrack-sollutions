@@ -6,6 +6,7 @@ require_once __DIR__ . '/includes/validacoes.php';
 
 redirecionar_se_nao_administrador();
 permitir_apenas_get_post();
+validar_csrf_post();
 
 $pageTitle = 'Editar Fornecedor';
 $activePage = 'fornecedores';
@@ -100,6 +101,7 @@ include __DIR__ . '/includes/nav.php';
     <?php endif; ?>
 
     <form method="post" action="fornecedor_editar.php?id=<?= h($id_encriptado) ?>" class="card border-0 shadow-sm">
+        <?= campo_csrf() ?>
         <div class="card-body p-4">
             <div class="row g-3">
                 <div class="col-md-8"><label class="form-label fw-bold">Nome da empresa</label><input name="nome" class="form-control" value="<?= h($fornecedor['nome']) ?>" required></div>

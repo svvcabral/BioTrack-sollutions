@@ -6,6 +6,7 @@ require_once __DIR__ . '/includes/validacoes.php';
 
 redirecionar_se_nao_autenticado();
 permitir_apenas_get_post();
+validar_csrf_post();
 
 $pageTitle = 'Editar Localização';
 $activePage = 'localizacoes';
@@ -79,6 +80,7 @@ include __DIR__ . '/includes/nav.php';
     <?php endif; ?>
 
     <form method="post" action="localizacao_editar.php?id=<?= h($id_encriptado) ?>" class="card border-0 shadow-sm">
+        <?= campo_csrf() ?>
         <div class="card-body p-4">
             <div class="row g-3">
                 <div class="col-12"><label class="form-label fw-bold">Serviço / Departamento</label><input name="servico" class="form-control" value="<?= h($localizacao['servico']) ?>" required></div>

@@ -4,6 +4,7 @@ require_once __DIR__ . '/includes/funcoes.php';
 require_once __DIR__ . '/includes/validacoes.php';
 
 redirecionar_se_nao_autenticado();
+validar_csrf_post();
 
 $pageTitle = 'Localizações';
 $activePage = 'localizacoes';
@@ -308,6 +309,7 @@ include __DIR__ . '/includes/nav.php';
                     <?php endif; ?>
 
                     <form action="localizacoes.php" method="post" novalidate>
+                        <?= campo_csrf() ?>
                         <div class="mb-3">
                             <label for="servico" class="form-label fw-bold text-dark">Nome do Serviço / Departamento</label>
                             <input type="text" id="servico" name="servico" class="form-control" placeholder="Ex: Ortopedia" value="<?= h($valores['servico']) ?>" required>

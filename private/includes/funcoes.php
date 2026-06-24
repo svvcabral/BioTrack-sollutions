@@ -81,3 +81,61 @@ function permitir_apenas_get_post(): void
         exit;
     }
 }
+
+function registar_log(PDO $ligacao, string $evento, ?string $entidade = null, ?int $id_registo = null, ?string $detalhes = null): void
+{
+    iniciar_sessao();
+
+    try {
+        $stmt = $ligacao->prepare(
+            'INSERT INTO logs (
+                id_utilizador, evento, entidade, id_registo, detalhes, endereco_ip
+             ) VALUES (
+                :id_utilizador, :evento, :entidade, :id_registo, :detalhes, :endereco_ip
+             )'
+        );
+        $stmt->execute([
+            ':id_utilizador' => isset($_SESSION['id_utilizador']) ? (int) $_SESSION['id_utilizador'] : null,
+            ':evento' => $evento,
+            ':entidade' => $entidade,
+            ':id_registo' => $id_registo,
+            ':detalhes' => $detalhes,
+            ':endereco_ip' => $_SERVER['REMOTE_ADDR'] ?? null,
+        ]);
+    } catch (PDOException $erro) {
+        error_log('Falha ao registar evento: ' . $erro->getMessage());
+    }
+}
+
+function token_csrf(): string
+{
+    iniciar_sessao();
+
+    if (empty($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+
+    return $_SESSION['csrf_token'];
+}
+
+function campo_csrf(): string
+{
+    return '<input type="hidden" name="csrf_token" value="'
+        . htmlspecialchars(token_csrf(), ENT_QUOTES, 'UTF-8')
+        . '">';
+}
+
+function validar_csrf_post(): void
+{
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        return;
+    }
+
+    iniciar_sessao();
+    $recebido = $_POST['csrf_token'] ?? '';
+
+    if (!is_string($recebido) || !hash_equals(token_csrf(), $recebido)) {
+        http_response_code(403);
+        exit('Pedido inválido ou expirado. Volta à página anterior e tenta novamente.');
+    }
+}

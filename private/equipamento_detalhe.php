@@ -4,6 +4,7 @@ require_once __DIR__ . '/includes/database.php';
 require_once __DIR__ . '/includes/funcoes.php';
 
 redirecionar_se_nao_autenticado();
+validar_csrf_post();
 
 $pageTitle = 'Ficha do Equipamento';
 $activePage = 'equipamentos';
@@ -524,6 +525,7 @@ include __DIR__ . '/includes/nav.php';
                                 <td class="text-end">
                                     <form method="post" action="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>&aba=documentacao"
                                           onsubmit="return confirm('Remover esta associação?');">
+                                        <?= campo_csrf() ?>
                                         <input type="hidden" name="acao" value="remover_fornecedor">
                                         <input type="hidden" name="id_equipamento" value="<?= h((string) $id_equipamento) ?>">
                                         <input type="hidden" name="id_fornecedor" value="<?= h((string) $associacao['id_fornecedor']) ?>">
@@ -664,6 +666,7 @@ include __DIR__ . '/includes/nav.php';
 <div class="modal fade" id="modalFornecedor" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <form class="modal-content" action="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>&aba=documentacao" method="post">
+            <?= campo_csrf() ?>
             <div class="modal-header">
                 <h2 class="modal-title h5">Associar fornecedor</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -712,6 +715,7 @@ include __DIR__ . '/includes/nav.php';
 <div class="modal fade" id="modalGarantia" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <form class="modal-content" action="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>&aba=documentacao" method="post">
+            <?= campo_csrf() ?>
             <div class="modal-header">
                 <h2 class="modal-title h5">Registar garantia</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -747,6 +751,7 @@ include __DIR__ . '/includes/nav.php';
 <div class="modal fade" id="modalContrato" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <form class="modal-content" action="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>&aba=documentacao" method="post">
+            <?= campo_csrf() ?>
             <div class="modal-header">
                 <h2 class="modal-title h5">Registar contrato de manutenção</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -797,6 +802,7 @@ include __DIR__ . '/includes/nav.php';
 <div class="modal fade" id="modalDocumento" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <form class="modal-content" action="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>&aba=documentacao" method="post">
+            <?= campo_csrf() ?>
             <div class="modal-header">
                 <h2 class="modal-title h5">Associar documento</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
