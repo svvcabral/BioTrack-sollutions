@@ -56,9 +56,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav align-items-center gap-3">
-                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#produtos">Soluções</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#visao">A Visão</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#contacto">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#produtos">Sobre nós</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#visao">A empresa</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#contacto">Saber mais</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark fw-medium" href="#contactos-rodape">Contacto</a></li>
                     <li class="nav-item">
                         <a href="login.php" class="btn btn-primary fw-bold ms-3 px-4" style="border-radius: 50px;">
                             Sign-in / Registo
@@ -69,7 +71,7 @@
         </div>
     </nav>
 
-    <section class="hero-section text-center text-md-start">
+    <section id="inicio" class="hero-section text-center text-md-start">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
@@ -133,25 +135,6 @@
         </div>
     </section>
 
-    <section id="visao" class="py-5" style="background-color: #009eb5;">
-        <div class="container py-5">
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-8">
-                    <i class="fas fa-quote-left text-white opacity-50 mb-4" style="font-size: 3rem;"></i>
-                    <h2 class="fw-bold text-white mb-4" style="letter-spacing: -0.5px;">Da Engenharia Biomédica para a Prática Clínica</h2>
-                    <p class="text-white fs-5 lh-lg mb-0" style="font-weight: 300;">
-                        "Como estudante de Engenharia Biomédica no ISEP, desenhei o BioTrack não apenas como um repositório de dados, mas como uma ponte crítica entre a tecnologia e o cuidado ao paciente. O objetivo deste projeto é provar que uma gestão de informação bem estruturada garante que o equipamento certo está pronto a salvar vidas, no momento exato em que é preciso."
-                    </p>
-                    <hr class="border-white opacity-25 my-5 mx-auto" style="width: 100px;">
-                    <div class="text-white">
-                        <h6 class="fw-bold text-uppercase letter-spacing-1 mb-1">Sofia</h6>
-                        <p class="small opacity-75 mb-0">Autora do Projeto • SIBDAS 2026</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="section-padding bg-light border-bottom">
         <div class="container text-center">
             <div class="row g-4 justify-content-center">
@@ -166,6 +149,25 @@
                 <div class="col-md-3">
                     <h2 class="stats-number">100%</h2>
                     <p class="fw-bold text-dark text-uppercase small" style="letter-spacing: 1px;">Conformidade</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visao" class="py-5" style="background-color: #009eb5;">
+        <div class="container py-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <i class="fas fa-quote-left text-white opacity-50 mb-4" style="font-size: 3rem;"></i>
+                    <h2 class="fw-bold text-white mb-4" style="letter-spacing: -0.5px;">Da Engenharia Biomédica para a Prática Clínica</h2>
+                    <p class="text-white fs-5 lh-lg mb-0" style="font-weight: 300;">
+                        "Como estudante de Engenharia Biomédica no ISEP, desenhei o BioTrack não apenas como um repositório de dados, mas como uma ponte crítica entre a tecnologia e o cuidado ao paciente. O objetivo deste projeto é provar que uma gestão de informação bem estruturada garante que o equipamento certo está pronto a salvar vidas, no momento exato em que é preciso."
+                    </p>
+                    <hr class="border-white opacity-25 my-5 mx-auto" style="width: 100px;">
+                    <div class="text-white">
+                        <h6 class="fw-bold text-uppercase letter-spacing-1 mb-1">Sofia</h6>
+                        <p class="small opacity-75 mb-0">Autora do Projeto • SIBDAS 2026</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -211,7 +213,7 @@
         </div>
     </section>
 
-    <footer class="bg-dark py-5">
+    <footer id="contactos-rodape" class="bg-dark py-5">
         <div class="container">
             <div class="row text-center text-md-start">
                 <div class="col-md-4 mb-4 mb-md-0">
