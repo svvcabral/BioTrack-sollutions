@@ -224,7 +224,8 @@
                 <div class="col-md-4 mb-4 mb-md-0">
                     <h6 class="text-uppercase fw-bold mb-4" style="letter-spacing: 1px; color: white !important;">Suporte Técnico</h6>
                     <p class="text-white-50 mb-1">2ª a 6ª Feira: 09h — 17h</p>
-                    <p class="text-white-50 mb-0">Sábados: 09h — 13h</p>
+                    <p class="text-white-50 mb-1">Sábados: 09h — 13h</p>
+                    <p class="text-white-50 mb-0">Domingos / Feriados: Encerrado</p>
                 </div>
                 
                 <div class="col-md-4">
