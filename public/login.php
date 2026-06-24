@@ -15,7 +15,7 @@ unset($_SESSION['validation_errors'], $_SESSION['server_error']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-in - BioTrack solutions</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/1241381.css">
+    <link rel="stylesheet" href="../assets/css/1241381.css?v=20260624b">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
@@ -62,7 +62,7 @@ unset($_SESSION['validation_errors'], $_SESSION['server_error']);
         <div class="card login-card p-4 p-md-5">
             <div class="text-center mb-4">
                 <a href="index.php" class="d-flex align-items-center justify-content-center text-decoration-none mb-2">
-                    <img src="../assets/img/logo_ciano.png" alt="Logótipo BioTrack"
+                    <img src="../assets/img/logo_ciano.png?v=20260624b" alt="Logótipo BioTrack"
                          class="logo-biotrack logo-biotrack-login me-2">
                     <span class="fw-bold fs-3 text-dark" style="letter-spacing: -1px;">BioTrack</span>
                 </a>

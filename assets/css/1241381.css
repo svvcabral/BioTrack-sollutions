@@ -87,14 +87,14 @@ body.pagina-login {
 }
 .logo-biotrack {
     display: block;
-    width: 64px;
+    width: 52px;
     height: 42px;
-    object-fit: cover;
-    object-position: 55% 50%;
+    object-fit: contain;
+    object-position: center;
     flex: 0 0 auto;
 }
 
 .logo-biotrack-login {
-    width: 76px;
-    height: 50px;
+    width: 68px;
+    height: 58px;
 }

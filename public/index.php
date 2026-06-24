@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BioTrack solutions - Gestão Hospitalar Inteligente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/1241381.css">
+    <link rel="stylesheet" href="../assets/css/1241381.css?v=20260624b">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         html { scroll-behavior: smooth; }
@@ -47,7 +47,7 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
-                <img src="../assets/img/logo_ciano.png" alt="Logótipo BioTrack"
+                <img src="../assets/img/logo_ciano.png?v=20260624b" alt="Logótipo BioTrack"
                      class="logo-biotrack me-2">
                 <span class="fw-bold fs-4 text-dark" style="letter-spacing: -1px;">BioTrack <span class="fw-normal text-muted fs-5">solutions</span></span>
             </a>

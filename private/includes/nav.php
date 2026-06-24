@@ -5,7 +5,7 @@ $activePage = $activePage ?? '';
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="dashboard.php">
-            <img src="../assets/img/logo_branco.png" alt="Logótipo BioTrack"
+            <img src="../assets/img/logo_branco.png?v=20260624b" alt="Logótipo BioTrack"
                  class="logo-biotrack me-2">
             <span class="fw-bold text-white"><?php echo APP_NAME; ?></span>
         </a>
