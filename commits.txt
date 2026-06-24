@@ -1,3 +1,4 @@
+e394161 - Sofia Velho Cabral - 2026-06-24 17:00:56 +0100 - feat:completar requisitos funcionais e ficheiros de submissão
 488e812 - Sofia Velho Cabral - 2026-06-24 10:44:55 +0100 - style: adicionar favicon BioTrack ao site
 55d579a - Sofia Velho Cabral - 2026-06-24 10:36:04 +0100 - feat: reorganizar navegação e secções da pagina publica
 3569bab - Sofia Velho Cabral - 2026-06-24 09:39:46 +0100 - content: atualizar horario do suporte tecnico
