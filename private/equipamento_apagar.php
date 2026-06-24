@@ -3,16 +3,17 @@
 require_once __DIR__ . '/includes/database.php';
 require_once __DIR__ . '/includes/funcoes.php';
 
-redirecionar_se_nao_autenticado();
+redirecionar_se_nao_administrador();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: equipamentos.php');
     exit;
 }
 
-$id_equipamento = trim($_POST['id_equipamento'] ?? '');
+$id_encriptado = trim($_POST['id'] ?? '');
+$id_equipamento = aes_decrypt($id_encriptado);
 
-if ($id_equipamento === '' || !ctype_digit($id_equipamento)) {
+if ($id_equipamento === false || !ctype_digit((string) $id_equipamento)) {
     header('Location: equipamentos.php?erro=equipamento_invalido');
     exit;
 }
@@ -23,7 +24,7 @@ try {
     $stmt = $ligacao->prepare(
         'UPDATE equipamentos
          SET ativo = 0
-         WHERE id_equipamento = :id_equipamento'
+         WHERE id_equipamento = :id_equipamento AND ativo = 1'
     );
 
     $stmt->execute([

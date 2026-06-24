@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':id_equipamento' => (int) $id_equipamento
             ]);
 
-            header('Location: equipamento_detalhe.php?id=' . $id_equipamento);
+            header('Location: equipamento_detalhe.php?id=' . urlencode($id_encriptado));
             exit;
         } catch (PDOException $erro) {
             $erros[] = 'Não foi possível guardar as alterações.';
@@ -307,7 +307,7 @@ include __DIR__ . '/includes/nav.php';
                 </div>
 
                 <div class="d-flex justify-content-end gap-2 mt-4">
-                    <a href="equipamento_detalhe.php?id=<?= h((string) $id_equipamento) ?>"
+                    <a href="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>"
                        class="btn btn-outline-secondary">
                         Cancelar
                     </a>

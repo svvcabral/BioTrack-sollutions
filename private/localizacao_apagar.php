@@ -3,15 +3,16 @@
 require_once __DIR__ . '/includes/database.php';
 require_once __DIR__ . '/includes/funcoes.php';
 
-redirecionar_se_nao_autenticado();
+redirecionar_se_nao_administrador();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: localizacoes.php');
     exit;
 }
 
-$id_localizacao = trim($_POST['id_localizacao'] ?? '');
-if ($id_localizacao === '' || !ctype_digit($id_localizacao)) {
+$id_encriptado = trim($_POST['id'] ?? '');
+$id_localizacao = aes_decrypt($id_encriptado);
+if ($id_localizacao === false || !ctype_digit((string) $id_localizacao)) {
     header('Location: localizacoes.php?erro=localizacao_invalida');
     exit;
 }
@@ -30,7 +31,9 @@ try {
     }
 
     $stmt = $ligacao->prepare(
-        'UPDATE localizacoes SET ativo = 0 WHERE id_localizacao = :id_localizacao'
+        'UPDATE localizacoes
+         SET ativo = 0
+         WHERE id_localizacao = :id_localizacao AND ativo = 1'
     );
     $stmt->execute([':id_localizacao' => (int) $id_localizacao]);
     header('Location: localizacoes.php?arquivada=1');

@@ -65,10 +65,11 @@ function formatar_preco($valor): string
     return number_format((float) $valor, 2, ',', '.') . ' €';
 }
 
-$id_equipamento = trim($_GET['id'] ?? $_POST['id_equipamento'] ?? '');
+$id_encriptado = trim($_GET['id'] ?? '');
+$id_equipamento = aes_decrypt($id_encriptado);
 $aba_ativa = $_GET['aba'] ?? 'tecnicos';
 
-if ($id_equipamento === '' || !ctype_digit($id_equipamento)) {
+if ($id_equipamento === false || !ctype_digit((string) $id_equipamento)) {
     header('Location: equipamentos.php?erro=equipamento_invalido');
     exit;
 }
@@ -118,7 +119,7 @@ try {
                     ':data_inicio' => $data_inicio ?: null,
                     ':data_fim' => $data_fim ?: null,
                 ]);
-                header('Location: equipamento_detalhe.php?id=' . $id_equipamento . '&aba=documentacao&sucesso=fornecedor');
+                header('Location: equipamento_detalhe.php?id=' . urlencode($id_encriptado) . '&aba=documentacao&sucesso=fornecedor');
                 exit;
             }
         }
@@ -139,7 +140,7 @@ try {
                     ':funcao' => $funcao,
                 ]);
             }
-            header('Location: equipamento_detalhe.php?id=' . $id_equipamento . '&aba=documentacao');
+            header('Location: equipamento_detalhe.php?id=' . urlencode($id_encriptado) . '&aba=documentacao');
             exit;
         }
 
@@ -203,7 +204,7 @@ try {
                     ':id_fornecedor' => $id_fornecedor !== '' ? (int) $id_fornecedor : null,
                 ]);
 
-                header('Location: equipamento_detalhe.php?id=' . $id_equipamento . '&aba=documentacao&sucesso=documento');
+                header('Location: equipamento_detalhe.php?id=' . urlencode($id_encriptado) . '&aba=documentacao&sucesso=documento');
                 exit;
             }
         }
@@ -242,7 +243,7 @@ try {
                     ':observacoes' => $observacoes ?: null,
                 ]);
 
-                header('Location: equipamento_detalhe.php?id=' . $id_equipamento . '&aba=documentacao&sucesso=garantia');
+                header('Location: equipamento_detalhe.php?id=' . urlencode($id_encriptado) . '&aba=documentacao&sucesso=garantia');
                 exit;
             }
         }
@@ -291,7 +292,7 @@ try {
                     ':observacoes' => $observacoes ?: null,
                 ]);
 
-                header('Location: equipamento_detalhe.php?id=' . $id_equipamento . '&aba=documentacao&sucesso=contrato');
+                header('Location: equipamento_detalhe.php?id=' . urlencode($id_encriptado) . '&aba=documentacao&sucesso=contrato');
                 exit;
             }
         }
@@ -302,7 +303,7 @@ try {
          FROM equipamentos e
          INNER JOIN categorias c ON c.id_categoria = e.id_categoria
          INNER JOIN localizacoes l ON l.id_localizacao = e.id_localizacao
-         WHERE e.id_equipamento = :id_equipamento AND e.ativo = 1'
+         WHERE e.id_equipamento = :id_equipamento'
     );
     $stmt->execute([':id_equipamento' => (int) $id_equipamento]);
     $equipamento = $stmt->fetch();
@@ -371,12 +372,17 @@ include __DIR__ . '/includes/nav.php';
             <p class="text-muted mb-0">
                 Código de inventário:
                 <span class="fw-bold text-dark"><?= h($equipamento['codigo_interno']) ?></span>
+                <span class="badge ms-2 <?= $equipamento['ativo'] ? 'bg-success' : 'bg-secondary' ?>">
+                    <?= $equipamento['ativo'] ? 'Ativo' : 'Arquivado' ?>
+                </span>
             </p>
         </div>
-        <a href="equipamento_editar.php?id=<?= h(aes_encrypt($id_equipamento)) ?>"
-           class="btn btn-outline-primary fw-bold">
-            <i class="fas fa-edit me-2"></i>Editar equipamento
-        </a>
+        <?php if ($equipamento['ativo']): ?>
+            <a href="equipamento_editar.php?id=<?= h($id_encriptado) ?>"
+               class="btn btn-outline-primary fw-bold">
+                <i class="fas fa-edit me-2"></i>Editar equipamento
+            </a>
+        <?php endif; ?>
     </div>
 
     <?php if (!empty($erros)): ?>
@@ -516,7 +522,7 @@ include __DIR__ . '/includes/nav.php';
                                 <td><?= h(formatar_data($associacao['data_inicio'])) ?></td>
                                 <td><?= h(formatar_data($associacao['data_fim'])) ?></td>
                                 <td class="text-end">
-                                    <form method="post" action="equipamento_detalhe.php?id=<?= h((string) $id_equipamento) ?>&aba=documentacao"
+                                    <form method="post" action="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>&aba=documentacao"
                                           onsubmit="return confirm('Remover esta associação?');">
                                         <input type="hidden" name="acao" value="remover_fornecedor">
                                         <input type="hidden" name="id_equipamento" value="<?= h((string) $id_equipamento) ?>">
@@ -657,7 +663,7 @@ include __DIR__ . '/includes/nav.php';
 
 <div class="modal fade" id="modalFornecedor" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="modal-content" action="equipamento_detalhe.php?id=<?= h((string) $id_equipamento) ?>&aba=documentacao" method="post">
+        <form class="modal-content" action="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>&aba=documentacao" method="post">
             <div class="modal-header">
                 <h2 class="modal-title h5">Associar fornecedor</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -705,7 +711,7 @@ include __DIR__ . '/includes/nav.php';
 
 <div class="modal fade" id="modalGarantia" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
-        <form class="modal-content" action="equipamento_detalhe.php?id=<?= h((string) $id_equipamento) ?>&aba=documentacao" method="post">
+        <form class="modal-content" action="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>&aba=documentacao" method="post">
             <div class="modal-header">
                 <h2 class="modal-title h5">Registar garantia</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -740,7 +746,7 @@ include __DIR__ . '/includes/nav.php';
 
 <div class="modal fade" id="modalContrato" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <form class="modal-content" action="equipamento_detalhe.php?id=<?= h((string) $id_equipamento) ?>&aba=documentacao" method="post">
+        <form class="modal-content" action="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>&aba=documentacao" method="post">
             <div class="modal-header">
                 <h2 class="modal-title h5">Registar contrato de manutenção</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -790,7 +796,7 @@ include __DIR__ . '/includes/nav.php';
 
 <div class="modal fade" id="modalDocumento" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <form class="modal-content" action="equipamento_detalhe.php?id=<?= h((string) $id_equipamento) ?>&aba=documentacao" method="post">
+        <form class="modal-content" action="equipamento_detalhe.php?id=<?= h($id_encriptado) ?>&aba=documentacao" method="post">
             <div class="modal-header">
                 <h2 class="modal-title h5">Associar documento</h2>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>

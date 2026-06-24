@@ -4,10 +4,17 @@ INSERT INTO utilizadores
     (nome, email, palavra_passe, perfil, ativo)
 VALUES
     (
-        'Sofia Velho Cabral',
+        'Maria Loureiro',
         'admin@biotrack.pt',
         '$2y$10$CnDfBENS4cMDO3c5fb8.qOlcUbMhfN2mzTVrfAi7NwLPDqmZMw6cm',
         'administrador',
+        TRUE
+    ),
+    (
+        'Técnico BioTrack',
+        'tecnico@biotrack.pt',
+        '$2y$12$OeaxVSh3Tc9vcPxkultv7.jLOWhasVLZ4GMKPCI2vz9GwRrn21px2',
+        'tecnico',
         TRUE
     );
 

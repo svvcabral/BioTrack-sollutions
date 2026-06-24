@@ -22,17 +22,25 @@ $activePage = $activePage ?? '';
                     <a class="nav-link <?php echo $activePage === 'equipamentos' ? 'active' : ''; ?>" href="equipamentos.php">Equipamentos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php echo $activePage === 'fornecedores' ? 'active' : ''; ?>" href="fornecedores.php">Fornecedores</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link <?php echo $activePage === 'localizacoes' ? 'active' : ''; ?>" href="localizacoes.php">Localizações</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?php echo $activePage === 'portal' ? 'active' : ''; ?>" href="backoffice_publico.php">Portal Público</a>
-                </li>
+                <?php if (utilizador_administrador()): ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo $activePage === 'fornecedores' ? 'active' : ''; ?>" href="fornecedores.php">Fornecedores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo $activePage === 'portal' ? 'active' : ''; ?>" href="backoffice_publico.php">Portal Público</a>
+                    </li>
+                <?php endif; ?>
             </ul>
 
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <span class="nav-link text-white-50">
+                        <?= htmlspecialchars($_SESSION['nome_utilizador'] ?? '', ENT_QUOTES, 'UTF-8') ?>
+                        (<?= ($_SESSION['perfil'] ?? '') === 'tecnico' ? 'Técnico' : 'Administrador' ?>)
+                    </span>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-white fw-bold" href="../public/logout.php">
                         <i class="fas fa-sign-out-alt me-1"></i> Sair

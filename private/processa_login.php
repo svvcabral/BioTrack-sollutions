@@ -48,6 +48,15 @@ try {
         header('Location: ' . BASE_URL . '/public/login.php');
         exit;
     }
+
+    $stmt = $ligacao->prepare(
+        'UPDATE utilizadores
+         SET ultimo_login = NOW()
+         WHERE id_utilizador = :id_utilizador'
+    );
+    $stmt->execute([
+        ':id_utilizador' => (int) $utilizador['id_utilizador']
+    ]);
 } catch (PDOException $erro) {
     $_SESSION['server_error'] = 'Não foi possível ligar à base de dados.';
     header('Location: ' . BASE_URL . '/public/login.php');

@@ -1,4 +1,8 @@
 <?php
+require_once __DIR__ . '/includes/funcoes.php';
+
+redirecionar_se_nao_administrador();
+
 $pageTitle = 'Portal Público';
 $activePage = 'portal';
 

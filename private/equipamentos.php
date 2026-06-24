@@ -380,7 +380,7 @@ include __DIR__ . '/includes/nav.php';
 <td class="px-4 py-3 text-end">
     <div class="d-flex justify-content-end gap-1">
 
-        <a href="equipamento_detalhe.php?id=<?= h((string) $equipamento['id_equipamento']) ?>"
+        <a href="equipamento_detalhe.php?id=<?= h(aes_encrypt($equipamento['id_equipamento'])) ?>"
            class="btn btn-sm btn-outline-primary"
            title="Ver detalhes">
             <i class="fas fa-eye"></i>
@@ -392,20 +392,13 @@ include __DIR__ . '/includes/nav.php';
             <i class="fas fa-edit"></i>
         </a>
 
-        <form action="equipamento_apagar.php"
-              method="post"
-              onsubmit="return confirm('Tem a certeza de que pretende apagar este equipamento?');">
-
-            <input type="hidden"
-                   name="id_equipamento"
-                   value="<?= h((string) $equipamento['id_equipamento']) ?>">
-
-            <button type="submit"
-                    class="btn btn-sm btn-outline-danger"
-                    title="Apagar equipamento">
-                <i class="fas fa-trash-alt"></i>
-            </button>
-        </form>
+        <?php if (utilizador_administrador()): ?>
+            <a href="equipamento_confirmar_arquivo.php?id=<?= h(aes_encrypt($equipamento['id_equipamento'])) ?>"
+               class="btn btn-sm btn-outline-danger"
+               title="Arquivar equipamento">
+                    <i class="fas fa-trash-alt"></i>
+            </a>
+        <?php endif; ?>
 
     </div>
 </td>

@@ -3,7 +3,7 @@ require_once __DIR__ . '/includes/database.php';
 require_once __DIR__ . '/includes/funcoes.php';
 require_once __DIR__ . '/includes/validacoes.php';
 
-redirecionar_se_nao_autenticado();
+redirecionar_se_nao_administrador();
 
 $pageTitle = 'Fornecedores';
 $activePage = 'fornecedores';
@@ -262,14 +262,10 @@ include __DIR__ . '/includes/nav.php';
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <?php if ($fornecedor['ativo']): ?>
-                                                <form action="fornecedor_apagar.php" method="post"
-                                                      onsubmit="return confirm('Tem a certeza de que pretende arquivar este fornecedor?');">
-                                                    <input type="hidden" name="id_fornecedor"
-                                                           value="<?= h((string) $fornecedor['id_fornecedor']) ?>">
-                                                    <button class="btn btn-sm btn-outline-danger" type="submit" title="Arquivar fornecedor">
+                                                <a href="fornecedor_confirmar_arquivo.php?id=<?= h(aes_encrypt($fornecedor['id_fornecedor'])) ?>"
+                                                   class="btn btn-sm btn-outline-danger" title="Arquivar fornecedor">
                                                         <i class="fas fa-trash-alt"></i>
-                                                    </button>
-                                                </form>
+                                                </a>
                                             <?php endif; ?>
                                         </div>
                                     </td>

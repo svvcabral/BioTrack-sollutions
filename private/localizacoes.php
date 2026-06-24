@@ -263,15 +263,11 @@ include __DIR__ . '/includes/nav.php';
                                class="btn btn-sm btn-outline-secondary fw-bold me-1">
                                 <i class="fas fa-edit"></i> Editar
                             </a>
-                            <?php if ($localizacao['ativo']): ?>
-                                <form action="localizacao_apagar.php" method="post" class="d-inline"
-                                      onsubmit="return confirm('Tem a certeza de que pretende arquivar esta localização?');">
-                                    <input type="hidden" name="id_localizacao"
-                                           value="<?= h((string) $localizacao['id_localizacao']) ?>">
-                                    <button class="btn btn-sm btn-outline-danger fw-bold" type="submit">
+                            <?php if ($localizacao['ativo'] && utilizador_administrador()): ?>
+                                <a href="localizacao_confirmar_arquivo.php?id=<?= h(aes_encrypt($localizacao['id_localizacao'])) ?>"
+                                   class="btn btn-sm btn-outline-danger fw-bold">
                                         <i class="fas fa-trash"></i> Arquivar
-                                    </button>
-                                </form>
+                                </a>
                             <?php endif; ?>
                         </div>
                     </div>

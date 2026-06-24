@@ -4,7 +4,7 @@ require_once __DIR__ . '/includes/database.php';
 require_once __DIR__ . '/includes/funcoes.php';
 require_once __DIR__ . '/includes/validacoes.php';
 
-redirecionar_se_nao_autenticado();
+redirecionar_se_nao_administrador();
 permitir_apenas_get_post();
 
 $pageTitle = 'Editar Fornecedor';

@@ -24,6 +24,23 @@ function redirecionar_se_nao_autenticado(): void
     }
 }
 
+function utilizador_administrador(): bool
+{
+    iniciar_sessao();
+
+    return ($_SESSION['perfil'] ?? '') === 'administrador';
+}
+
+function redirecionar_se_nao_administrador(): void
+{
+    redirecionar_se_nao_autenticado();
+
+    if (!utilizador_administrador()) {
+        header('Location: ' . BASE_URL . '/private/dashboard.php?erro=sem_permissao');
+        exit;
+    }
+}
+
 function aes_encrypt($valor): string
 {
     $encriptado = openssl_encrypt(
