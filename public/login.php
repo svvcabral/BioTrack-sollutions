@@ -62,7 +62,8 @@ unset($_SESSION['validation_errors'], $_SESSION['server_error']);
         <div class="card login-card p-4 p-md-5">
             <div class="text-center mb-4">
                 <a href="index.php" class="d-flex align-items-center justify-content-center text-decoration-none mb-2">
-                    <img src="../assets/img/logo_ciano.png"  height="40" class="me-2">
+                    <img src="../assets/img/logo_ciano.png" alt="Logótipo BioTrack"
+                         class="logo-biotrack logo-biotrack-login me-2">
                     <span class="fw-bold fs-3 text-dark" style="letter-spacing: -1px;">BioTrack</span>
                 </a>
                 <p class="text-muted small">Sistemas de Informação Hospitalar</p>

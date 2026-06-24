@@ -5,7 +5,8 @@ $activePage = $activePage ?? '';
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="dashboard.php">
-            <img src="../assets/img/logo_branco.png" alt="BioTrack Logo" height="30" class="me-2">
+            <img src="../assets/img/logo_branco.png" alt="Logótipo BioTrack"
+                 class="logo-biotrack me-2">
             <span class="fw-bold text-white"><?php echo APP_NAME; ?></span>
         </a>
 
@@ -35,16 +36,26 @@ $activePage = $activePage ?? '';
             </ul>
 
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <span class="nav-link text-white-50">
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle text-white fw-bold bg-transparent border-0"
+                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle me-1"></i>
                         <?= htmlspecialchars($_SESSION['nome_utilizador'] ?? '', ENT_QUOTES, 'UTF-8') ?>
                         (<?= ($_SESSION['perfil'] ?? '') === 'tecnico' ? 'Técnico' : 'Administrador' ?>)
-                    </span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white fw-bold" href="../public/logout.php">
-                        <i class="fas fa-sign-out-alt me-1"></i> Sair
-                    </a>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                        <li>
+                            <a class="dropdown-item py-2" href="alterar_palavra_passe.php">
+                                <i class="fas fa-key text-primary me-2"></i>Alterar palavra-passe
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item py-2" href="../public/logout.php">
+                                <i class="fas fa-sign-out-alt text-danger me-2"></i>Sair da conta
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>

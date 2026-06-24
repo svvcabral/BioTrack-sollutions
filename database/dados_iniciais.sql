@@ -6,7 +6,7 @@ VALUES
     (
         'Maria Loureiro',
         'admin@biotrack.pt',
-        '$2y$10$CnDfBENS4cMDO3c5fb8.qOlcUbMhfN2mzTVrfAi7NwLPDqmZMw6cm',
+        '$2y$12$ZMr2b.P3Tb/liEYe3gcZ4OkyETkGFIpZczgwiSBNgtyBOB4H7p.fO',
         'administrador',
         TRUE
     ),
